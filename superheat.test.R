@@ -2,11 +2,7 @@ library(superheat); library(readxl)
 getwd(); 
 setwd("~/Desktop")
 
-tmp.f <- read_excel("superheat.example.xlsx", sheet="sig"); row.names(tmp.f) <- tmp.f$genes ; tmp.f[,1] <- NULL ; tmp.f[is.na(tmp.f)] <- ""
-tmp.p <- read_excel("superheat.example.xlsx", sheet="values"); row.names(tmp.p) <- tmp.p$genes ; tmp.p[,1] <- NULL
-tmp.g <- read_excel("superheat.example.xlsx", sheet="groups"); row.names(tmp.g) <- tmp.g$genes ; tmp.g[,1] <- NULL
-
-my.max <- c( max(tmp.p), abs( min(tmp.p) ) ) 
+load("example.data.RData")
 
 png("my.heatmap.png",  width = 6000, height = 100* nrow(tmp.p) + 1500 ) # This is in a loop in my full dataset, so png size will vary
 
